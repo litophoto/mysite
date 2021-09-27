@@ -1,0 +1,12 @@
+<h1>Piplup list</h1>
+<form action="" method="get">
+    {% csrf_token %}
+    <input type="text" name="query" value="{{ request.GET.query }}">
+    <button type="submit">Search</button>
+</form>
+
+{% for wallpaper in wallpaper_list %}
+<a href="{% url 'piplup:detail' wallpaper.pk %}">
+    <img src="{{ MEDIA_URL }}{{ wallpaper.image }}" alt="">
+</a>
+{% endfor %}
